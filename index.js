@@ -1,10 +1,11 @@
+const { boolean } = require('boolean');
 const core = require('@actions/core');
 
 // most @actions toolkit packages have async methods
 async function run() {
   try {
-    const default_false = core.getInput('test-boolean-default-false');
-    const default_true = core.getInput('test-boolean-default-true');
+    const default_false = boolean(core.getInput('test-boolean-default-false'));
+    const default_true = boolean(core.getInput('test-boolean-default-true'));
     console.log(`default_false is ${default_false}`);
     console.log(`default_true is ${default_true}`);
     if(default_true)
@@ -13,7 +14,7 @@ async function run() {
     }
     if(default_false)
     {
-      console.log('default_false evaluates to false');
+      console.log('default_false evaluates to true');
     }
   }
   catch (error) {

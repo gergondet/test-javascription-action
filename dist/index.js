@@ -53,13 +53,14 @@ module.exports = require("os");
 /***/ 104:
 /***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
 
+const { boolean } = __webpack_require__(142);
 const core = __webpack_require__(470);
 
 // most @actions toolkit packages have async methods
 async function run() {
   try {
-    const default_false = core.getInput('test-boolean-default-false');
-    const default_true = core.getInput('test-boolean-default-true');
+    const default_false = boolean(core.getInput('test-boolean-default-false'));
+    const default_true = boolean(core.getInput('test-boolean-default-true'));
     console.log(`default_false is ${default_false}`);
     console.log(`default_true is ${default_true}`);
     if(default_true)
@@ -68,7 +69,7 @@ async function run() {
     }
     if(default_false)
     {
-      console.log('default_false evaluates to false');
+      console.log('default_false evaluates to true');
     }
   }
   catch (error) {
@@ -77,6 +78,29 @@ async function run() {
 }
 
 run()
+
+
+/***/ }),
+
+/***/ 142:
+/***/ (function(__unusedmodule, exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const boolean = function (value) {
+    if (typeof value === 'string') {
+        return ['true', 't', 'yes', 'y', 'on', '1'].includes(value.trim().toLowerCase());
+    }
+    if (typeof value === 'number') {
+        return value === 1;
+    }
+    if (typeof value === 'boolean') {
+        return value;
+    }
+    return false;
+};
+exports.boolean = boolean;
 
 
 /***/ }),
