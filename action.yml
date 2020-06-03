@@ -1,13 +1,14 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Test'
+description: 'Test passing boolean parameters to an action'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  test-boolean-default-false:  # id of input
+    description: 'a boolean that defaults to false'
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps 
-    description: 'The message to output'
+    default: 'false'
+  test-boolean-default-false:  # id of input
+    description: 'a boolean that defaults to true'
+    required: true
+    default: 'true'
 runs:
   using: 'node12'
   main: 'dist/index.js'

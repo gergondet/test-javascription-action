@@ -11,15 +11,21 @@ jobs:
   units:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - run: npm ci
     - run: npm test
 
   # test action works running from the graph  
-  test:
+  test-default:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+    - uses: ./
+  test-opposite:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
     - uses: ./
       with:
-        milliseconds: 1000
+        test-boolean-default-false: true
+        test-boolean-default-true: false
