@@ -4,11 +4,11 @@ inputs:
   test-boolean-default-false:  # id of input
     description: 'a boolean that defaults to false'
     required: true
-    default: 'false'
-  test-boolean-default-false:  # id of input
+    default: false
+  test-boolean-default-true:  # id of input
     description: 'a boolean that defaults to true'
     required: true
-    default: 'true'
+    default: true
 runs:
   using: 'node12'
   main: 'dist/index.js'
